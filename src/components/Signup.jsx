@@ -5,12 +5,19 @@ import {login} from '../store/authSlice'
 import {Button, Input, Logo} from './index.js'
 import {useDispatch} from 'react-redux'
 import {useForm} from 'react-hook-form'
+import { HiEye, HiEyeOff } from 'react-icons/hi';
 
 function Signup() {
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+      };
+
 
 const create = async(data) => {
     setError("")
@@ -67,13 +74,24 @@ const create = async(data) => {
                             }
                         })}
                         />
+
+                        <div className="relative">
                         <Input
                         label="Password: "
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         placeholder="Enter your password"
                         {...register("password", {
                             required: true,})}
                         />
+                        <button
+                        type="button"
+                        className="absolute inset-x-55 inset-y-14 right-0 flex items-center px-3 focus:outline-none"
+                        onClick={togglePasswordVisibility}
+                        >
+                         {showPassword ? <HiEyeOff className="text-gray-400" /> : <HiEye className="text-gray-400" />}    
+                        </button>
+                        </div>
+
                         <Button type="submit" className="w-full">
                             Create Account
                         </Button>

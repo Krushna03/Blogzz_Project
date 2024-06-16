@@ -5,7 +5,7 @@ import authService from "./appwrite/auth"
 import {login, logout} from "./store/authSlice"
 import { Footer, Header } from './components'
 import { Outlet, useLocation } from 'react-router-dom'
-import Spinner from './pages/Spinner'
+import Spinner from './pages/Spin/Spinner'
 
 function App() {
   const [loading, setLoading] = useState(true)

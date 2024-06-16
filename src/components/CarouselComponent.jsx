@@ -1,70 +1,84 @@
-// CarouselComponent.jsx
 import React, { useEffect, useState } from 'react';
 import { Carousel } from '@mantine/carousel';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import appwriteService from '../appwrite/config';
-import {Link} from 'react-router-dom'
-import Spinner from '../pages/Spinner';
-
+import { Link } from 'react-router-dom';
+import Loader from '../pages/Spin/Loader';
 
 const CarouselComponent = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     appwriteService.getPosts().then((response) => {
       if (response) {
         setPosts(response.documents.slice(0, 10));
+        setLoading(false);
       }
     });
   }, []);
 
-  return posts ?  (
-    <Carousel className='bg-gray-900 p-2 rounded-2xl ml-14 mr-15'
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <Loader /> {/* You can replace Spinner with a Skeleton Loader */}
+      </div>
+    );
+  }
+
+  return (
+    <Carousel
+      className="w-full"
       withIndicators
       loop
-      nextControlIcon={<KeyboardArrowRight style={{fontSize: 50, backgroundColor: 'rgba(0, 0, 0, 0.6)', }} />}
-      previousControlIcon={<KeyboardArrowLeft style={{ fontSize: 50, backgroundColor: 'rgba(0, 0, 0, 0.6)',}}/>}
-      styles={{ control: {
-          width: '10px',height: '88px', margin: '0 275px', transform: 'translateY(-90%)',
+      nextControlIcon={<KeyboardArrowRight className="bg-black bg-opacity-40" style={{ fontSize: 30 }} />}
+      previousControlIcon={<KeyboardArrowLeft className="bg-black bg-opacity-40" style={{ fontSize: 30 }} />}
+      styles={{
+        control: {
+          width: '30px',
+          height: '30px',
+          margin: '0 16px',
+          transform: 'translateY(-50%)',
+        },
+        controls: {
+          display: 'flex',
+          justifyContent: 'space-between',
+          position: 'absolute',
+          top: '50%',
+          left: '100px',
+          right: '100px',
+          transform: 'translateY(-50%)',
         },
       }}
     >
-    
-    {posts.map((post) => (
-      <Carousel.Slide key={post.$id}>
-        <div style={{ width: '100%', height: '490px', display: 'flex',  justifyContent: 'center', alignItems: 'center'}}>
-        
-        <Link to={`/post/${post.$id}`}>
-          <img
-            src={appwriteService.getFilePreview(post.featuredImage)}
-            alt={post.title}
-            style={{ width: '150%',height: '160%', objectFit: 'contain' }}
-          />
-        </Link>
+      {posts.map((post) => (
+        <Carousel.Slide key={post.$id}>
+          <div className="flex flex-col items-center w-full">
+            <Link to={`/post/${post.$id}`} className="flex justify-center w-full">
+              <img
+                src={appwriteService.getFilePreview(post.featuredImage)}
+                alt={post.title}
+                className="object-cover w-3/4 border-4 border-black rounded-2xl max-h-[400px]"
+              />
+            </Link>
 
-          <h2 
-            style={{position: 'absolute',bottom: 29,left: 320,right:320, color: 'white', paddingBottom: '0px',
-              textAlign: 'center', fontSize: '25px', background: 'rgb(0,0,0,0.3)'
-            }}
-          >
-            {post.title}
-          </h2>
-
-          <Link to={`/post/${post.$id}`}>
-          <p style={{ position: 'absolute', bottom: 0, left: 320, right:320, color: 'white', opacity: '90%',padding: '0px',
-              textAlign: 'center', fontSize: '19px', background: 'rgb(0,0,0,0.3)', 
-              }}
-            className='hover:text-sky-700'
-              >
-           See more
-          </p>
-          </Link>
-        </div>
-      </Carousel.Slide>
-    ))}
-
-  </Carousel>
-  ) : <Spinner />
+            <div className="relative w-3/4 flex flex-col items-center mt-1">
+              <h2 className="text-lg md:text-2xl font-bold bg-black bg-opacity-30 text-black p-2 rounded-lg">
+                {post.title}
+              </h2>
+              <Link to={`/post/${post.$id}`}>
+                <p
+                  className="text-base md:text-lg bg-black bg-opacity-30 text-black p-2 rounded-lg hover:text-blue-500 mt-1"
+                >
+                  See more
+                </p>
+              </Link>
+            </div>
+          </div>
+        </Carousel.Slide>
+      ))}
+    </Carousel>
+  );
 };
 
 export default CarouselComponent;
