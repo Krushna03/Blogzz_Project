@@ -5,6 +5,7 @@ import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import Loader from "./Spin/Loader";
+import { FaEdit, FaTrash } from "react-icons/fa"; // Import icons
 
 export default function Post() {
     const [post, setPost] = useState(null);
@@ -52,15 +53,22 @@ export default function Post() {
                         alt={post.title}
                         className="rounded-xl w-full h-full object-cover"
                     />
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
+                    {post && (
+                        <div className="absolute right-6 top-6 flex space-x-2">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
+                                <Button
+                                    bgColor="bg-green-500"
+                                    className="flex items-center px-4 py-2 rounded-full hover:bg-green-600 transition duration-300"
+                                >
+                                    <FaEdit className="mr-2" /> Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
-                                Delete
+                            <Button
+                                bgColor="bg-red-500"
+                                onClick={deletePost}
+                                className="flex items-center px-4 py-2 rounded-full hover:bg-red-600 transition duration-300"
+                            >
+                                <FaTrash className="mr-2" /> Delete
                             </Button>
                         </div>
                     )}
