@@ -37,10 +37,10 @@ const CarouselComponent = () => {
         control: {
           width: '40px',
           height: '40px',
-          margin: '0 6px', // Default margin for small devices
-          transform: 'translateY(-70%)',
+          margin: '0 8px', // Default margin for small devices
+          transform: 'translateY(-80%)',
           '@media (min-width: 768px)': {
-            margin: '0 14px', // Margin for medium and large devices
+            margin: '0 16px', // Margin for medium and large devices
           },
         },
         controls: {
