@@ -1,11 +1,26 @@
 #root {
-  max-width: 93%;
-  margin: 0 auto;
-  padding: 6px;
+  /* max-width: 97%; */
+  /* margin: 0 ; */
+  /* padding: 6px; */
   text-align: center;
 }
 
-.logo {
+/* @media (min-width: 1024px) {
+  #root {
+     padding-left: 50px;
+     padding-right: 50px;
+  }
+}
+
+@media (min-width: 640px) {
+  #root {
+     padding-left: 0px;
+     padding-right: 0px;
+  }
+} */
+
+
+/* .logo {
   height: 6em;
   padding: 1em;
   will-change: filter;
@@ -39,5 +54,5 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
 

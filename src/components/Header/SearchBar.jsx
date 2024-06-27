@@ -52,30 +52,28 @@ function SearchBar({authStatus}) {
 
 
    return (
-      <div className='relative w-[95%]'>
+      <div className="relative">
       {authStatus && (
-        <Input
-          type='text'
-          className='text-m duration-200 hover:bg-blue-100 rounded-full text-zinc-950 pr-40 w-[120%] '
-          placeholder='Search for the Blog'
+        <input
+          type="text"
+          className="text-sm p-1 md:text-m md:p-3 duration-200 hover:bg-blue-100 rounded-full text-zinc-950 w-full pr-40 border  md:w-[120%] placeholder-shown:pl-2"
+          placeholder="Search the blog"
           value={query}
           onChange={handleSearchChange}
         />
       )}
-
-        {error && (
-            <div className="absolute bg-white border border-gray-200 rounded-lg shadow-lg mt-2 w-full z-10 p-4 text-red-500">
-                {error}
-            </div>
-        )}
-
+      {error && (
+        <div className="absolute bg-white border border-gray-200 rounded-lg shadow-lg mt-2 w-full z-10 p-4 text-red-500">
+          {error}
+        </div>
+      )}
       {recommendations.length > 0 && (
         <ul className="absolute bg-white border border-gray-200 rounded-lg shadow-lg mt-2 w-full z-10">
           {recommendations.map((item) => (
             <li
-              key={item.$id}
+              key={item.id}
               className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-              onClick={() => handleRecommendationClick(item.$id)}
+              onClick={() => handleRecommendationClick(item.id)}
             >
               {item.title}
             </li>

@@ -29,34 +29,35 @@ function Home() {
     if (authStatus === false) {
         return (
             <div className="w-full py-16 mt-4 text-center bg-gradient-to-r from-black to-gray-800">
-                <Container>
-                    <div className="flex flex-wrap justify-center items-center">
-                        <div className="w-full lg:w-1/2 p-8">
-                            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                                Welcome to Our Blog Platform
-                            </h1>
-                            <p className="text-lg md:text-2xl text-gray-300 mb-8">
-                                Discover a world of fascinating articles, insights, and stories from our diverse community of writers. Join us today to start reading, sharing, and creating amazing content.
-                            </p>
-                            <div>
-                                <Link to="/login">
-                                    <button className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200">
-                                        Login to Explore
-                                    </button>
-                                </Link>
-                                <Link to="/signup" className="ml-4">
-                                    <button className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200">
-                                        Sign Up Now
-                                    </button>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="w-full lg:w-1/2 p-8">
-                            <img src={BlogLanding} alt="Blogging" className="rounded-lg shadow-2xl w-full" />
-                        </div>
-                    </div>
-                </Container>
+    <Container>
+        <div className="flex flex-wrap justify-center items-center">
+            <div className="w-full lg:w-1/2 p-8">
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                    Welcome to Our Blog Platform
+                </h1>
+                <p className="text-lg md:text-2xl text-gray-300 mb-8">
+                    Discover a world of fascinating articles, insights, and stories from our diverse community of writers. Join us today to start reading, sharing, and creating amazing content.
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center items-center">
+                    <Link to="/login">
+                        <button className="px-4 py-2 md:px-6 md:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 mb-2 sm:mb-0">
+                            Login to Explore
+                        </button>
+                    </Link>
+                    <Link to="/signup" className="sm:ml-4">
+                        <button className="px-4 py-2 md:px-6 md:py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200">
+                            Sign Up Now
+                        </button>
+                    </Link>
+                </div>
             </div>
+            <div className="w-full lg:w-1/2 p-8">
+                <img src={BlogLanding} alt="Blogging" className="rounded-lg shadow-2xl w-full" />
+            </div>
+        </div>
+    </Container>
+</div>
+
         );
     }
 
