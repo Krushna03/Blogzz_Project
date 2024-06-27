@@ -31,23 +31,30 @@ const CarouselComponent = () => {
       className="w-full"
       withIndicators
       loop
-      nextControlIcon={<KeyboardArrowRight className="bg-black bg-opacity-40" style={{ fontSize: 30 }} />}
-      previousControlIcon={<KeyboardArrowLeft className="bg-black bg-opacity-40" style={{ fontSize: 30 }} />}
+      nextControlIcon={<KeyboardArrowRight className="bg-opacity-40" style={{ fontSize: 40 }} />}
+      previousControlIcon={<KeyboardArrowLeft className="bg-opacity-40" style={{ fontSize: 40 }} />}
       styles={{
         control: {
-          width: '30px',
-          height: '30px',
-          margin: '0 16px',
-          transform: 'translateY(-50%)',
+          width: '40px',
+          height: '40px',
+          margin: '0 8px', // Default margin for small devices
+          transform: 'translateY(-60%)',
+          '@media (min-width: 768px)': {
+            margin: '0 16px', // Margin for medium and large devices
+          },
         },
         controls: {
           display: 'flex',
           justifyContent: 'space-between',
           position: 'absolute',
           top: '50%',
-          left: '100px',
-          right: '100px',
+          left: '16px', // Default left position for small devices
+          right: '16px', // Default right position for small devices
           transform: 'translateY(-50%)',
+          '@media (min-width: 768px)': {
+            left: '100px', // Left position for medium and large devices
+            right: '100px', // Right position for medium and large devices
+          },
         },
       }}
     >

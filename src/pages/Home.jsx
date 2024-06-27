@@ -68,7 +68,7 @@ function Home() {
                 <CarouselComponent {...posts} />
             </div>
 
-            <div className="pt-14 pb-5 mx-auto w-full sm:w-1/2 md:w-1/4 text-center">
+            <div className="pt-14 pb-5 mx-auto w-full md:w-1/4 text-center">
                 <p className="text-xl h-[7vh] p-2 rounded-lg bg-black text-white font-mono">
                     Latest Post
                 </p>
