@@ -10,14 +10,13 @@
      padding-left: 50px;
      padding-right: 50px;
   }
-}
-
-@media (min-width: 640px) {
-  #root {
-     padding-left: 0px;
-     padding-right: 0px;
-  }
 } */
+
+/* @media (min-width: 640px) {
+  .small-latestpost {
+     width: 20%;
+  }
+}  */
 
 
 /* .logo {
