@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Container, PostCard } from '../components';
 import appwriteService from "../appwrite/config";
 import Loader from './Spin/Loader';
@@ -7,7 +7,7 @@ function AllPosts() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+    const AllPost = useEffect(() => {
         appwriteService.getPosts([]).then((posts) => {
             if (posts) {
                 setPosts(posts.documents);
@@ -15,6 +15,12 @@ function AllPosts() {
             setLoading(false);
         });
     }, []);
+
+
+    useCallback(() =>{
+        AllPost()
+    }, [AllPost])
+
 
     return !loading ? (
         <div className='w-full py-4'>

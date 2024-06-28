@@ -54,13 +54,14 @@ export default function Post() {
                         className="rounded-xl w-full h-full object-cover"
                     />
                     {post && (
-                        <div className="absolute right-6 top-6 flex space-x-2">
+                        <div className="absolute right-4 top-4 flex space-x-2">
                             <Link to={`/edit-post/${post.$id}`}>
                                 <Button
                                     bgColor="bg-green-500"
-                                    className="flex items-center px-4 py-2 rounded-full hover:bg-green-600 transition duration-300"
+                                    className="flex items-center px-4 py-2 rounded-full hover:bg-green-700 transition duration-300 "
                                 >
-                                    <FaEdit className="mr-2" /> Edit
+                                    <FaEdit className="mr-2" />
+                                    <span className="hidden sm:inline">Edit</span>
                                 </Button>
                             </Link>
                             <Button
@@ -68,7 +69,8 @@ export default function Post() {
                                 onClick={deletePost}
                                 className="flex items-center px-4 py-2 rounded-full hover:bg-red-600 transition duration-300"
                             >
-                                <FaTrash className="mr-2" /> Delete
+                                <FaTrash className="mr-2" />
+                                <span className="hidden sm:inline">Delete</span>
                             </Button>
                         </div>
                     )}
@@ -79,7 +81,17 @@ export default function Post() {
                 <div className="browser-css px-4 md:px-20">
                     {parse(post.content)}
                 </div>
+             
+
+             <div className="pt-8 font-bold align-center">
+                <p className="sm:text-2xl">
+                End of the Blog....🙂
+                </p>
+             </div>
+
+
             </div>
+
         )
     );
 }

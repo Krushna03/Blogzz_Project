@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Carousel } from '@mantine/carousel';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import appwriteService from '../appwrite/config';
@@ -9,7 +9,7 @@ const CarouselComponent = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const postSlides = useEffect(() => {
     appwriteService.getPosts().then((response) => {
       if (response) {
         setPosts(response.documents.slice(0, 10));
@@ -17,6 +17,13 @@ const CarouselComponent = () => {
       }
     });
   }, []);
+
+
+  useCallback(() => {
+     postSlides()
+  }, [postSlides])
+
+
 
   if (loading) {
     return (
@@ -48,9 +55,9 @@ const CarouselComponent = () => {
           justifyContent: 'space-between',
           position: 'absolute',
           top: '50%',
-          left: '16px', // Default left position for small devices
-          right: '16px', // Default right position for small devices
-          transform: 'translateY(-50%)',
+          left: '15px', // Default left position for small devices
+          right: '15px', // Default right position for small devices
+          transform: 'translateY(-140%)',
           '@media (min-width: 768px)': {
             left: '100px', // Left position for medium and large devices
             right: '100px', // Right position for medium and large devices
