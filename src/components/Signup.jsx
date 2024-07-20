@@ -6,6 +6,7 @@ import {Button, Input, Logo} from './index.js'
 import {useDispatch} from 'react-redux'
 import {useForm} from 'react-hook-form'
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import LoaderBtn from '../pages/Spin/LoaderBtn.jsx'
 
 function Signup() {
     const navigate = useNavigate()
@@ -13,6 +14,7 @@ function Signup() {
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -20,6 +22,7 @@ function Signup() {
 
 
 const create = async(data) => {
+    setLoading(true)
     setError("")
     try {
         const userData = await authService.createAccount(data)
@@ -30,6 +33,9 @@ const create = async(data) => {
         }
     } catch (error) {
         setError(error.message)
+    }
+    finally{
+        setLoading(false)
     }
 }
 
@@ -93,7 +99,7 @@ const create = async(data) => {
                         </div>
 
                         <Button type="submit" className="w-full">
-                            Create Account
+                        {loading ? <LoaderBtn /> : 'Create Account'} 
                         </Button>
                     </div>
                 </form>

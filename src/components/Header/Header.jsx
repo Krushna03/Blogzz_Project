@@ -11,9 +11,6 @@ function Header() {
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!menuOpen);
-  };
 
   const navItems = [
     {
@@ -77,7 +74,7 @@ function Header() {
             ) : null
           )}
           {authStatus && (
-            <li className="py-3 text-lg">
+            <li>
               <LogoutBtn />
             </li>
           )}

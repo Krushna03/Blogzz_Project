@@ -88,7 +88,7 @@ export class Service{
                 '66573af5001df060ddb5',     
                 queries,   
                 [
-                    Query.limit(10),
+                    Query.limit(10), 
                     Query.offset(0)
                 ]
             )

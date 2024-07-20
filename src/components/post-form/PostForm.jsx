@@ -99,6 +99,7 @@ export default function PostForm({ post }) {
                     }}
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+                
             </div>
             <div className="w-full lg:w-1/3 px-4 py-3">
                 <Input

@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import authService from '../appwrite/auth';
 import { useForm } from 'react-hook-form';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import LoaderBtn from '../pages/Spin/LoaderBtn';
 
 function Login() {
   const navigate = useNavigate();
@@ -13,12 +14,14 @@ function Login() {
   const { register, handleSubmit} = useForm();
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
   const login = async (data) => {
+    setLoading(true)
     setError('');
     try {
       const session = await authService.login(data);
@@ -29,6 +32,9 @@ function Login() {
       }
     } catch (error) {
       setError(error.message);
+    }
+    finally {
+      setLoading(false)
     }
   };
 
@@ -81,7 +87,7 @@ function Login() {
             </div>
 
             <Button type="submit" className="w-full">
-              Sign in
+            {loading ? <LoaderBtn /> : 'Sign in'}
             </Button>
 
           </div>

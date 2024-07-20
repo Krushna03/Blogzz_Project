@@ -83,9 +83,7 @@ const router = createBrowserRouter([
 //     createRoutesFromElements(
 //       <Route path="/" element={<App />}>
 //         <Route path="/" element={<Home />} loading />
-//         <Route
-//           path="/login"
-//           element={
+//         <Route path="/login" element={
 //             <AuthLayout authentication={false}>
 //               <Login />
 //             </AuthLayout>
