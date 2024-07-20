@@ -71,9 +71,9 @@ function SearchBar({authStatus}) {
         <ul className="absolute bg-white border border-gray-200 rounded-lg shadow-lg mt-2 w-full z-10">
           {recommendations.map((item) => (
             <li
-              key={item.id}
+              key={item.$id}
               className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-              onClick={() => handleRecommendationClick(item.id)}
+              onClick={() => handleRecommendationClick(item.$id)}
             >
               {item.title}
             </li>

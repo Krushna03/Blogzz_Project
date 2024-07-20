@@ -87,6 +87,11 @@ export default function Post() {
                 <p className="sm:text-2xl">
                 End of the Blog....🙂
                 </p>
+
+                <p className="pt-7">
+                 <p className="bg-black text-white">Note:</p> 
+                  Post will not delete when clicked to delete button as the developer have restricted the permission in the backend
+                </p>
              </div>
 
 
